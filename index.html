@@ -1,0 +1,203 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>blas bakery — coming soon</title>
+
+  <!-- Seasons font via Adobe Fonts / Google alternative fallback -->
+  <!-- Using @font-face with a CDN-hosted Seasons approximation -->
+  <!-- Seasons is a paid font; using a close serif with similar editorial elegance -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <!-- Cormorant Garamond is the closest free match to Seasons' editorial serif style -->
+  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;1,300;1,400&display=swap" rel="stylesheet">
+
+  <style>
+    *, *::before, *::after {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    :root {
+      --cream: #f5ede3;
+      --warm-white: #fdfaf7;
+      --text: #ffffff;
+      --text-soft: rgba(255, 255, 255, 0.75);
+    }
+
+    html, body {
+      width: 100%;
+      height: 100%;
+    }
+
+    body {
+      font-family: 'Cormorant Garamond', 'Georgia', serif;
+      background: #c9b4a2;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      min-height: 100vh;
+      overflow: hidden;
+    }
+
+    .bg {
+      position: fixed;
+      inset: 0;
+      background-image: url('/images/background.png');
+      background-size: cover;
+      background-position: center;
+      filter: brightness(0.92);
+      z-index: 0;
+      animation: slowdrift 30s ease-in-out infinite alternate;
+    }
+
+    @keyframes slowdrift {
+      from { transform: scale(1.04) translate(0, 0); }
+      to   { transform: scale(1.08) translate(-1%, -1%); }
+    }
+
+    /* Subtle dark vignette overlay */
+    .bg::after {
+      content: '';
+      position: absolute;
+      inset: 0;
+      background: radial-gradient(ellipse at center, transparent 40%, rgba(60, 45, 35, 0.35) 100%);
+    }
+
+    .stage {
+      position: relative;
+      z-index: 1;
+      text-align: center;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      gap: 0;
+      animation: fadein 2s ease both;
+    }
+
+    @keyframes fadein {
+      from { opacity: 0; transform: translateY(12px); }
+      to   { opacity: 1; transform: translateY(0); }
+    }
+
+    .wordmark {
+      font-size: clamp(88px, 18vw, 160px);
+      font-weight: 300;
+      letter-spacing: -0.01em;
+      color: var(--text);
+      line-height: 1;
+      animation: fadein 2.2s ease both;
+    }
+
+    .tagline {
+      font-size: clamp(16px, 2.5vw, 22px);
+      font-style: italic;
+      font-weight: 300;
+      color: var(--text-soft);
+      letter-spacing: 0.08em;
+      margin-top: 6px;
+      animation: fadein 2.6s ease both;
+    }
+
+    .divider {
+      width: 40px;
+      height: 1px;
+      background: rgba(255,255,255,0.4);
+      margin: 28px auto 0;
+      animation: fadein 3s ease both;
+    }
+
+    .notify {
+      margin-top: 28px;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      gap: 12px;
+      animation: fadein 3.2s ease both;
+    }
+
+    .notify p {
+      font-size: clamp(12px, 1.6vw, 14px);
+      letter-spacing: 0.18em;
+      text-transform: uppercase;
+      color: var(--text-soft);
+      font-style: normal;
+      font-weight: 400;
+    }
+
+    .email-row {
+      display: flex;
+      gap: 0;
+      border-bottom: 1px solid rgba(255,255,255,0.5);
+      padding-bottom: 6px;
+    }
+
+    .email-row input {
+      background: transparent;
+      border: none;
+      outline: none;
+      color: var(--text);
+      font-family: 'Cormorant Garamond', serif;
+      font-size: clamp(14px, 1.8vw, 16px);
+      font-style: italic;
+      letter-spacing: 0.04em;
+      width: clamp(180px, 28vw, 260px);
+      padding: 4px 0;
+    }
+
+    .email-row input::placeholder {
+      color: rgba(255,255,255,0.45);
+    }
+
+    .email-row button {
+      background: transparent;
+      border: none;
+      cursor: pointer;
+      color: rgba(255,255,255,0.6);
+      font-family: 'Cormorant Garamond', serif;
+      font-size: 13px;
+      letter-spacing: 0.16em;
+      text-transform: uppercase;
+      padding: 4px 0 4px 16px;
+      transition: color 0.25s;
+    }
+
+    .email-row button:hover {
+      color: #fff;
+    }
+
+    .location {
+      margin-top: 48px;
+      font-size: clamp(11px, 1.4vw, 12px);
+      letter-spacing: 0.22em;
+      text-transform: uppercase;
+      color: rgba(255,255,255,0.38);
+      animation: fadein 3.6s ease both;
+    }
+  </style>
+</head>
+<body>
+
+  <div class="bg"></div>
+
+  <main class="stage">
+    <h1 class="wordmark">blas</h1>
+    <p class="tagline">coming soon</p>
+
+    <div class="divider"></div>
+
+    <div class="notify">
+      <p>be the first to know</p>
+      <div class="email-row">
+        <input type="email" placeholder="your email" />
+        <button type="button">notify me</button>
+      </div>
+    </div>
+
+    <p class="location">blasbakery.ca</p>
+  </main>
+
+</body>
+</html>
